@@ -1,43 +1,32 @@
 # Site
-repository: Git repository where your resume will be hosted, only required if you are hosting on GitHub (eg. sproogen/modern-resume-theme)
-# favicon: Directory of your favicon (eg. images/favicon.ico)(optional)
+repository: sproogen/modern-resume-theme
+favicon: images/favicon.ico
 
 # Content configuration version
 version: 2
 
 # Personal info
-name: Your Name
-title: Your job title
-email: Your email (optional)
+name: Mohammad Sadegh Majidi Yazdi
+title: Undergraduate Student - Computer Engineering
+email: sadeghmajidiyazdi@gmail.com
 # email_title: Email (Email title override)
-phone: Your phone number (optional)
+phone: (+98)9361457810
 # phone_title: Phone (Phone title override)
-website: Your website (eg. https://google.com)(optional)
+website: sadeghmajidi.ir
 # website_title: Web (Website title override)
 
 # Dark Mode (true/false/never)
-darkmode: false
+darkmode: true
 
 # Social links
-twitter_username: jekyllrb
-github_username:  jekyll
-stackoverflow_username: "00000001"
-dribbble_username: jekyll
-facebook_username: jekyll
-flickr_username: jekyll
-instagram_username: jekyll
-linkedin_username: jekyll
-xing_username: jekyll
-pinterest_username: jekyll
-youtube_username: jekyll
-orcid_username: 0000-0000-0000-0000
-googlescholar_username: D847cGsAAAAJ
+github_username: sadegh-majidi
+linkedin_username: mohammad-sadegh-majidi-yazdi-602275191
 
 # Additional icon links
-additional_links:
-- title: Link name
-  icon: Font Awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
-  url: Link url (eg. https://google.com)
+#additional_links:
+#- title: Link name
+#  icon: Font Awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
+#  url: Link url (eg. https://google.com)
 # - title: another link
 #   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
 #   url: Link url (eg. https://google.com)
@@ -50,15 +39,17 @@ additional_links:
 
 # About Section
 # about_title: About Me (Use this to override about section title)
-about_profile_image: Directory of profile image (eg. images/profile.jpg)
+about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Write an awesome description about yourself here, this supports markdown, so you can add [links](http://foobar.com) and highlight things <mark>like this</mark>.
+  My name is Parsa Mohammadian. I am studying for a B.Sc. in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a>. My research interests are:
+    - Distributed Systems
+    - IoT
+    - Computer Networks
+    - Operating Systems
+    - Computer Architecture
+    - Computer Security
 
-  You can even add paragraphs by using empty lines like this and add anything else [markdown](https://www.markdownguide.org/getting-started#what-is-markdown) supports such as
-    - Lists
-    - Tables
-    - <a href="google.com">Links</a>
-    - Images ![alt text](/images/landscape-trees.jpg "Trees")
+  As a computer scientist, I have always enjoyed studying theoretical computer science and getting my hands dirty with mathematics, but I have a special fondness for the practical aspects of computer science. I love to spend consecutive hours trying to understand a challenge in the system and solve it. My ultimate professional goal is to use my knowledge and skills to create something of value for the betterment of the world.
 
 content:
   - title: Projects # Title for the section
