@@ -10,7 +10,7 @@ name: Mohammad Sadegh Majidi Yazdi
 title: Undergraduate Student - Computer Engineering
 email: sadeghmajidiyazdi@gmail.com
 # email_title: Email (Email title override)
-phone: (+98)9361457810
+phone: (+98) 9361457810
 # phone_title: Phone (Phone title override)
 website: sadeghmajidi.me
 # website_title: Web (Website title override)
@@ -41,7 +41,7 @@ linkedin_username: mohammad-sadegh-majidi-yazdi-602275191
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  My name is Parsa Mohammadian. I am studying for a B.Sc. in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a>. My research interests are:
+  My name is Mohammad Sadegh Majidi Yazdi. I am studying for a B.Sc. in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a>. My research interests are:
     - Distributed Systems
     - IoT
     - Computer Networks
