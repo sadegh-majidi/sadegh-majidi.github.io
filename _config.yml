@@ -72,24 +72,44 @@ content:
       - layout: top-middle
         title: Secure Messaging Application
         additional_links:
-          - title:  Github
+          - title:  Github Link
             icon: fab fa-github
             url: https://github.com/sadegh-majidi/Network_Security_Project
         description: Designed and Implemented a secure messaging application using Python as part of the Data & Network Security course. To satisfy a wide range of security measurements, we used a simplified version of the Double Ratchet algorithm and public-private key encryption and concepts like hashing and signing. This project is also well-structured in regard to software development standards.
       - layout: top-middle
         title: Tweet Categorization NLP Project
+        additional_links:
+          - title: Github Link
+            icon: fab fa-github
+            url: https://github.com/sadegh-majidi/nlp_tweet_categorization
         description: Implemented a tweet categorization nlp model in C/C++ efficiently to achieve higher performance and speed and lesser resource usage. This model categorizes tweets based on their contents.
       - layout: top-middle
         title: CMinus Compiler
+        additional_links:
+          - title: Github Link
+            icon: fab fa-github
+            url: https://github.com/sadegh-majidi/compiler-project
         description: Implemented a Compiler for CMinus Langauge, a simplified subset of the C language, using Python and its standard libraries. The compiler consisted of Lexer, Parser, Code Generator, and Semantic Analyzer.
       - layout: top-middle
         title: MIPS Simulator
+        additional_links:
+          - title: Github Link
+            icon: fab fa-github
+            url: https://github.com/sadegh-majidi/MIPS-Processor
         description: Implemented a simplified MIPS processor simulator using Verilog. It supports pipeline and caching.
       - layout: top-middle
         title: SnappFood Minus
+        additional_links:
+          - title: Github Link
+            icon: fab fa-github
+            url: https://github.com/sadegh-majidi/Mobile-Programming-Final-Project
         description: An online food ordering and delivery app on Android.
       - layout: top-middle
         title: Online Shop Application
+        additional_links:
+          - title: Github Link
+            icon: fab fa-github
+            url: https://github.com/AdvProg2020/Project_team-5
         description: Designed and Implemented a simplified online shop as part of the Advanced Programming course using mainly Java and based on MVC architecture.
 
   - title: Experiences
@@ -97,11 +117,15 @@ content:
     content:
       - layout: left
         title: Yektanet
+        link: https://www.yektanet.com
+        link_text: Website
         role: Software Engineer
         caption: Feb 2021 - Oct 2021 & Oct 2022 - Apr 2023
         description: Yektanet is the largest online advertising company in Iran. As a backend software engineer, I designed and developed online affiliate marketing platform (Chavosh) and product retargeting services using Django, Typescript, Postgresql and redis.
       - layout: left
         title: Gharar
+        link: https://gharar.ir
+        link_text: Website
         role: Software Engineer
         caption: Jun 2022 - Aug 2022
         description: As a full-stack software engineer, I developed a new chat system (backend & frontend) for webinars using Django, React, and Lua and I also reduced live streaming latency by properly using HLS protocol over Nginx.
@@ -109,7 +133,7 @@ content:
   - title: A Little More About Me
     layout: text
     content: |
-      Alongside my interests in Distributed Systems, Computer Networks, and Computer Security some of my other interests and hobbies are:
+      Alongside my interests in Distributed Systems, Computer Networks, and Computer Security, some of my other interests and hobbies are:
       - Gaming, with a particular fondness for Role-Playing Games
       - Swimming, my favorite sport
       - Listening to music, especially in the Rock and Metal genre
