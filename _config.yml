@@ -82,14 +82,14 @@ content:
         description: I worked for almost a year as a research assistant under the guidance of <a href="https://sharif.edu/~izadi/">Dr. Mohammad Izadi</a> and as a member of the Distributed and Multi-agent Systems Lab. We worked on WIDESim, a simulation tool for resource management and scheduling of workflows in distributed computing environments with graph topology. This tool was built upon the well-known <a href="https://github.com/Cloudslab/cloudsim">CloudSim</a> simulator. The development is finished, and we finished the work on the paper recently.
 
   - title: Publications
-      layout: list
-      content:
-        - layout: top-middle
-          title: "WIDESim: A toolkit for simulating resource management techniques of Workflows in Distributed Environments with graph topology"
-          link: https://arxiv.org/abs/2206.03538
-          link_text: preprint on arxiv
-          caption: Submitted to the Springer Journal of Grid Computing, 2023
-          description: Mohammad Amin Rayej, Hajar Siar, Ahmadreza Hamzei, Mohammad Sadegh Majidi Yazdi, Parsa Mohammadian, Mohammad Izadi
+    layout: list
+    content:
+      - layout: top-middle
+        title: "WIDESim: A toolkit for simulating resource management techniques of Workflows in Distributed Environments with graph topology"
+        link: https://arxiv.org/abs/2206.03538
+        link_text: preprint on arxiv
+        caption: Submitted to the Springer Journal of Grid Computing, 2023
+        description: Mohammad Amin Rayej, Hajar Siar, Ahmadreza Hamzei, Mohammad Sadegh Majidi Yazdi, Parsa Mohammadian, Mohammad Izadi
 
   - title: Projects
     layout: list
