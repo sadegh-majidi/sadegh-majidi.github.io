@@ -52,55 +52,67 @@ about_content: | # this will include new lines to allow paragraphs
   As a computer scientist, I have always enjoyed studying theoretical computer science and getting my hands dirty with mathematics, but I have a special fondness for the practical aspects of computer science. I love to spend consecutive hours trying to understand a challenge in the system and solve it. My ultimate professional goal is to use my knowledge and skills to create something of value for the betterment of the world.
 
 content:
-  - title: Projects # Title for the section
-    layout: list # Type of content section (list/text)
-    content:
-      - layout: left
-        border: weak  # Value of `weak` will display a weak border below this item. # Any 
-                      # other value (or no value) means no border will be displayed
-        title: Project name
-        link: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-        link_text: Link Text
-        additional_links:
-          - title:  Github page for project (eg. sproogen/modern-resume-theme)
-            icon: fab fa-github
-            url: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-          - title:  Github page for project (eg. sproogen/modern-resume-theme)
-            icon: fab fa-github
-            url: Link to project (eg. sproogen.github.io/modern-resume-theme)(optional)
-        quote: >
-          Short overview of the project (optional)
-        description: | # this will include new lines to allow paragraphs
-          Description about the work on/with the project
-  - title: Experience
-    layout: list
-    content:
-      - layout: right
-        title: Company name
-        sub_title: Job title
-        caption: Date Range (eg. November 2016 - present)
-        link: Link to company (optional)
-        quote: >
-          Short description of the company (optional)
-        description: | # this will include new lines to allow paragraphs
-          Description of role
   - title: Education
     layout: list
     content:
-      - layout: top-right
-        title: Institution name
-        sub_title: Qualifications (eg. BA Performing Arts)
-        caption: Date Range (eg. 2016 - 2019)
-        quote: >
-          Short institution or course description (optional)
-        description: | # this will include new lines to allow paragraphs
-          Description of qualification
+      - layout: left
+        title: Sharif University of Technology
+        caption: September 2019 - February 2024
+        sub_title: Bachelor of Science in Computer Engineering
+        description: Pursuing a BSc in Computer Engineering at Sharif University of Technology, one of the premier institutions in the region. Achieved an outstanding GPA of 19.24/20, reflecting dedication and academic excellence.
+      - layout: left
+        title: Mandegar Alborz High School
+        caption: Fall 2016 - Summer 2019
+        sub_title: High School Diploma in Mathematics and Physics
+        description: Completed high school education at Mandegar Alborz High School, one of the oldest and most prestigious institutions in Iran. Graduated with an outstanding GPA of 18.8/20, showcasing my academic prowess and commitment.
+
+  - title: Projects
+    layout: list
+    content:
+      - layout: top-middle
+        title: Secure Messaging Application
+        additional_links:
+          - title:  Github
+            icon: fab fa-github
+            url: https://github.com/sadegh-majidi/Network_Security_Project
+        description: Designed and Implemented a secure messaging application using Python as part of the Data & Network Security course. To satisfy a wide range of security measurements, we used a simplified version of the Double Ratchet algorithm and public-private key encryption and concepts like hashing and signing. This project is also well-structured in regard to software development standards.
+      - layout: top-middle
+        title: Tweet Categorization NLP Project
+        description: Implemented a tweet categorization nlp model in C/C++ efficiently to achieve higher performance and speed and lesser resource usage. This model categorizes tweets based on their contents.
+      - layout: top-middle
+        title: CMinus Compiler
+        description: Implemented a Compiler for CMinus Langauge, a simplified subset of the C language, using Python and its standard libraries. The compiler consisted of Lexer, Parser, Code Generator, and Semantic Analyzer.
+      - layout: top-middle
+        title: MIPS Simulator
+        description: Implemented a simplified MIPS processor simulator using Verilog. It supports pipeline and caching.
+      - layout: top-middle
+        title: SnappFood Minus
+        description: An online food ordering and delivery app on Android.
+      - layout: top-middle
+        title: Online Shop Application
+        description: Designed and Implemented a simplified online shop as part of the Advanced Programming course using mainly Java and based on MVC architecture.
+
+  - title: Experiences
+    layout: list
+    content:
+      - layout: left
+        title: Yektanet
+        role: Software Engineer
+        caption: Feb 2021 - Oct 2021 & Oct 2022 - Apr 2023
+        description: Yektanet is the largest online advertising company in Iran. As a backend software engineer, I designed and developed online affiliate marketing platform (Chavosh) and product retargeting services using Django, Typescript, Postgresql and redis.
+      - layout: left
+        title: Gharar
+        role: Software Engineer
+        caption: Jun 2022 - Aug 2022
+        description: As a full-stack software engineer, I developed a new chat system (backend & frontend) for webinars using Django, React, and Lua and I also reduced live streaming latency by properly using HLS protocol over Nginx.
+
   - title: A Little More About Me
     layout: text
-    content: | # this will include new lines to allow paragraphs
-      This is where you can write a little more about yourself. You could title this section **Interests** and include some of your other interests.
-
-      Or you could title it **Skills** and write a bit more about things that make you more desirable, like *leadership* or *teamwork*
+    content: |
+      Alongside my interests in Distributed Systems, Computer Networks, and Computer Security some of my other interests and hobbies are:
+      - Gaming, with a particular fondness for Role-Playing Games
+      - Swimming, my favorite sport
+      - Listening to music, especially in the Rock and Metal genre
 
 # Footer
 footer_show_references: true
