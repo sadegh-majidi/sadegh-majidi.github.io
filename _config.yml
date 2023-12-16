@@ -89,6 +89,7 @@ content:
           link: https://arxiv.org/abs/2206.03538
           link_text: preprint on arxiv
           caption: Submitted to the Springer Journal of Grid Computing, 2023
+          description: Mohammad Amin Rayej, Hajar Siar, Ahmadreza Hamzei, Mohammad Sadegh Majidi Yazdi, Parsa Mohammadian, Mohammad Izadi
 
   - title: Projects
     layout: list
