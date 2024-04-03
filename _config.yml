@@ -41,13 +41,13 @@ linkedin_username: mohammad-sadegh-majidi-yazdi-602275191
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  My name is Mohammad Sadegh Majidi Yazdi. I am studying for a B.Sc. in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a>. My research interests are:
-    - Distributed Systems
-    - IoT
-    - Computer Networks
-    - Operating Systems
+  My name is Mohammad Sadegh Majidi Yazdi. I've got a B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a> (March 2024). My research interests are:
     - Computer Architecture
-    - Computer Security
+    - Operating Systems
+    - Embedded Systems
+    - Computer Networks
+    - IoT
+    - Distributed Systems
 
   As a computer scientist, I have always enjoyed studying theoretical computer science and getting my hands dirty with mathematics, but I have a special fondness for the practical aspects of computer science. I love to spend consecutive hours trying to understand a challenge in the system and solve it. My ultimate professional goal is to use my knowledge and skills to create something of value for the betterment of the world.
 
@@ -57,9 +57,9 @@ content:
     content:
       - layout: left
         title: Sharif University of Technology
-        caption: September 2019 - February 2024
+        caption: September 2019 - March 2024
         sub_title: Bachelor of Science in Computer Engineering
-        description: Pursuing a BSc in Computer Engineering at Sharif University of Technology, one of the premier institutions in the region. Achieved an outstanding GPA of 19.24/20, reflecting dedication and academic excellence.
+        description: Pursuing a BSc in Computer Engineering at Sharif University of Technology, one of the premier institutions in the region. Achieved an outstanding GPA of 19.19/20, reflecting dedication and academic excellence.
       - layout: left
         title: Mandegar Alborz High School
         caption: Fall 2016 - Summer 2019
@@ -78,7 +78,7 @@ content:
             icon: fab fa-github
             url: https://github.com/ARH80/WIDESim
         role: Research Assistant
-        caption: Feb 2023 - Now
+        caption: Feb 2023 - March 2024
         description: I worked for almost a year as a research assistant under the guidance of <a href="https://sharif.edu/~izadi/">Dr. Mohammad Izadi</a> and as a member of the Distributed and Multi-agent Systems Lab. We worked on WIDESim, a simulation tool for resource management and scheduling of workflows in distributed computing environments with graph topology. This tool was built upon the well-known <a href="https://github.com/Cloudslab/cloudsim">CloudSim</a> simulator. The development is finished, and we finished the work on the paper recently.
 
   - title: Publications
@@ -100,7 +100,7 @@ content:
           - title:  Github Link
             icon: fab fa-github
             url: https://github.com/sadegh-majidi/Network_Security_Project
-        description: Designed and Implemented a secure messaging application using Python as part of the Data & Network Security course. To satisfy a wide range of security measurements, we used a simplified version of the Double Ratchet algorithm and public-private key encryption and concepts like hashing and signing. This project is also well-structured in regard to software development standards.
+        description: Designed and Implemented a messaging application using Python as part of the Data & Network Security course. To satisfy a wide range of security measurements, we used a simplified version of the Double Ratchet algorithm and public-private key encryption and concepts like hashing and signing. This project is also well-structured in regard to software development standards.
       - layout: top-middle
         title: Tweet Categorization NLP Project
         additional_links:
