@@ -9,9 +9,9 @@ version: 2
 name: Mohammad Sadegh Majidi Yazdi
 title: Graduate Student - Computer Science
 email: sadeghmajidiyazdi@gmail.com
-email_title: Primary Email
-email: mmajidiy@purdue.edu
-email_title: Work Email
+email_title: Email
+# email: mmajidiy@purdue.edu
+# email_title: Work Email
 phone: +1 (765) 409-8314
 # phone_title: Phone (Phone title override)
 website: sadeghmajidi.ir
@@ -97,7 +97,7 @@ content:
       - layout: top-middle
         title: "WIDESim: A Toolkit for Simulating Resource Management Techniques Of Scientific Workflows in Distributed Environments with Graph Topology"
         link: https://doi.org/10.1007/s10723-024-09778-y
-        link_text: publication
+        link_text: publication link
         caption: Journal of Grid Computing, August 2024
         description: Mohammad Amin Rayej, Hajar Siar, Ahmadreza Hamzei, Mohammad Sadegh Majidi Yazdi, Parsa Mohammadian, Mohammad Izadi
 
