@@ -7,10 +7,12 @@ version: 2
 
 # Personal info
 name: Mohammad Sadegh Majidi Yazdi
-title: Undergraduate Student - Computer Engineering
+title: Graduate Student - Computer Science
 email: sadeghmajidiyazdi@gmail.com
-# email_title: Email (Email title override)
-phone: (+98) 9361457810
+email_title: Primary Email
+email: mmajidiy@purdue.edu
+email_title: Work Email
+phone: +1 (765) 409-8314
 # phone_title: Phone (Phone title override)
 website: sadeghmajidi.ir
 # website_title: Web (Website title override)
@@ -41,12 +43,10 @@ linkedin_username: mohammad-sadegh-majidi-yazdi-602275191
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  My name is Mohammad Sadegh Majidi Yazdi. I've got a B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a> (March 2024). My research interests are:
+  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a PhD student in the Department of Computer Science (Lawson) at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer architecture security.  I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a> (March 2024). My research interests are:
     - Computer Architecture
-    - Operating Systems
     - Computer Security
-    - Computer Networks
-    - IoT
+    - Operating Systems
     - Distributed Systems
 
   As a computer scientist, I have always enjoyed studying theoretical computer science and getting my hands dirty with mathematics, but I have a special fondness for the practical aspects of computer science. I love to spend consecutive hours trying to understand a challenge in the system and solve it. My ultimate professional goal is to use my knowledge and skills to create something of value for the betterment of the world.
@@ -55,6 +55,11 @@ content:
   - title: Education
     layout: list
     content:
+      - layout: left
+        title: Purdue University
+        caption: August 2024 - Present
+        sub_title: PhD in Computer Science
+        description: I'm in the middle of a challenging but rewarding academic journey at Purdue University, one of the top universities in the United States (it has the oldest Computer Science department in the country). During my PhD studies, I work there as a full-time research assistant.
       - layout: left
         title: Sharif University of Technology
         caption: September 2019 - March 2024
@@ -69,6 +74,11 @@ content:
   - title: Research Experiences
     layout: list
     content:
+      - layout: left
+        title: Purdue University
+        role: Research Assistant
+        caption: Aug 2024 - Present
+        description: I am currently working as a research assistant under the supervision of <a href="https://mktrm.github.io/">Prof. Kazem Taram</a> and as a full-time member of the SecArch Lab. Our lab's general focus is on the fields of Computer Architecture and Security, but for now, I am focusing on the reverse engineering of LLMs using side-channel information like timing leakages.
       - layout: left
         title: Sharif University of Technology
         link: https://github.com/ARH80/WIDESim
@@ -85,10 +95,10 @@ content:
     layout: list
     content:
       - layout: top-middle
-        title: "WIDESim: A toolkit for simulating resource management techniques of Workflows in Distributed Environments with graph topology"
-        link: https://arxiv.org/abs/2206.03538
-        link_text: preprint on arxiv
-        caption: Submitted to the Springer Journal of Grid Computing, 2023
+        title: "WIDESim: A Toolkit for Simulating Resource Management Techniques Of Scientific Workflows in Distributed Environments with Graph Topology"
+        link: https://doi.org/10.1007/s10723-024-09778-y
+        link_text: publication
+        caption: Journal of Grid Computing, August 2024
         description: Mohammad Amin Rayej, Hajar Siar, Ahmadreza Hamzei, Mohammad Sadegh Majidi Yazdi, Parsa Mohammadian, Mohammad Izadi
 
   - title: Projects
@@ -101,6 +111,20 @@ content:
             icon: fab fa-github
             url: https://github.com/sadegh-majidi/Network_Security_Project
         description: Designed and Implemented a messaging application using Python as part of the Data & Network Security course. To satisfy a wide range of security measurements, we used a simplified version of the Double Ratchet algorithm and public-private key encryption and concepts like hashing and signing. This project is also well-structured in regard to software development standards.
+      - layout: top-middle
+        title: UEFI Weather Application
+        additional_links:
+          - title:  Github Link
+            icon: fab fa-github
+            url: https://github.com/Sharif-University-ESRLab/Fall2023-uefi-weather-app
+        description: This project is part of the Hardware Lab course, featuring a UEFI application designed to display weather information and forecasts for users. The primary focus lies in the ability to interact with a network interface card (NIC) within the UEFI environment and initiate a simple HTTP request using the tools provided by EDK II, the standard UEFI implementation. This project serves as an excellent learning opportunity for working with the fundamentals of the UEFI environment and stands as a valuable reference for those seeking to utilize network interfaces within this setting.
+      - layout: top-middle
+        title: System Design Final Project
+        additional_links:
+          - title: Gitlab Link
+            icon: fab fa-github
+            url: https://gitlab.com/sadegh.majidi/tahlil-final-project
+        description: Designed and implemented an online storage drive, similar to Google Drive, using Flask and Jinja templates, with additional use of JavaScript, HTML, and CSS. This drive supports file sharing, metadata storage, folder management, and various file manipulation operations, among other features. Additionally, implemented a full CI/CD pipeline for the project using GitLab Runner.
       - layout: top-middle
         title: Tweet Categorization NLP Project
         additional_links:
@@ -146,7 +170,7 @@ content:
         link_text: Website
         role: Software Engineer
         caption: Feb 2021 - Oct 2021 & Oct 2022 - Apr 2023
-        description: Yektanet is the largest online advertising company in Iran. As a backend software engineer, I designed and developed online affiliate marketing platform (Chavosh) and product retargeting services using Django, Typescript, Postgresql and redis.
+        description: Yektanet is the largest online advertising company in Iran. As a backend software engineer, I designed and developed online affiliate marketing platform (<a href="https://chavosh.org/">Chavosh</a>) and product retargeting services using Django, Typescript, Postgresql and redis.
       - layout: left
         title: Gharar
         link: https://gharar.ir
@@ -158,7 +182,7 @@ content:
   - title: A Little More About Me
     layout: text
     content: |
-      Alongside my interests in Distributed Systems, Computer Networks, and Computer Security, some of my other interests and hobbies are:
+      Alongside my interests in Computer Security, Computer Architecture, and Distributed Systems, some of my other interests and hobbies are:
       - Gaming, with a particular fondness for Role-Playing Games
       - Swimming, my favorite sport
       - Listening to music, especially in the Rock and Metal genre
