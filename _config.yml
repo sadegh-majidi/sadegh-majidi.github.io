@@ -78,7 +78,7 @@ content:
         title: Purdue University
         role: Research Assistant
         caption: Aug 2024 - Present
-        description: I am currently working as a research assistant under the supervision of <a href="https://mktrm.github.io/">Prof. Kazem Taram</a> and as a full-time member of the SecArch Lab. Our lab's general focus is on the fields of Computer Architecture and Security, but for now, I am focusing on the reverse engineering of LLMs using side-channel information like timing leakages.
+        description: I am currently working as a research assistant under the supervision of <a href="https://mktrm.github.io/">Prof. Kazem Taram</a> and as a full-time member of the SecArch Lab. Our lab's general focus is on the fields of Computer Architecture and Security, but for now, I am focusing on the security and privacy of LLMs (Large Language Models).
       - layout: left
         title: Sharif University of Technology
         link: https://github.com/ARH80/WIDESim
