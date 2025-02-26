@@ -28,7 +28,7 @@ googlescholar_username: ZXFOus0AAAAJ
 # Additional icon links
 additional_links:
 - title: CV
-  icon: fa-regular fa-file
+  icon: fa fa-file-text
   url: assets/CV.pdf
 
 # Google Analytics and Tag Manager
@@ -41,7 +41,7 @@ additional_links:
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a first-year PhD student in the Department of Computer Science at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer security, specifically security and privacy of LLMs (Large Language Models). I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a> (March 2024). My research interests are:
+  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a first-year PhD student in the Department of Computer Science at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer security, specifically security and privacy of LLMs (Large Language Models). I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">Sharif University of Technology</a> (March 2024). My research interests are:
     - Computer Security
     - Large Language Models
     - Computer Architecture
@@ -87,7 +87,7 @@ content:
             url: https://github.com/ARH80/WIDESim
         role: Research Assistant
         caption: Feb 2023 - March 2024
-        description: I worked for almost a year as a research assistant under the guidance of <a href="https://sharif.edu/~izadi/">Dr. Mohammad Izadi</a> and as a member of the Distributed and Multi-agent Systems Lab. We worked on WIDESim, a simulation tool for resource management and scheduling of workflows in distributed computing environments with graph topology. This tool was built upon the well-known <a href="https://github.com/Cloudslab/cloudsim">CloudSim</a> simulator. The development is finished, and we finished the work on the paper recently.
+        description: I worked for almost a year as a research assistant under the guidance of <a href="https://sharif.edu/~izadi/">Dr. Mohammad Izadi</a> and as a member of the Distributed and Multi-agent Systems Lab. We worked on WIDESim, a simulation tool for resource management and scheduling of workflows in distributed computing environments with graph topology. This tool was built upon the well-known <a href="https://github.com/Cloudslab/cloudsim">CloudSim</a> simulator. I had the opportunity to work on various aspects of this project, including implementing different parts of the simulator, and writing a paper for publication.
 
   - title: Publications
     layout: list
