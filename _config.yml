@@ -8,13 +8,13 @@ version: 2
 # Personal info
 name: Mohammad Sadegh Majidi Yazdi
 title: Graduate Student - Computer Science
-email: sadeghmajidiyazdi@gmail.com
+email: mmajidiy@purdue.edu
 email_title: Email
 # email: mmajidiy@purdue.edu
 # email_title: Work Email
 phone: +1 (765) 409-8314
 # phone_title: Phone (Phone title override)
-website: sadeghmajidi.ir
+website: sadegh-majidi.github.io
 # website_title: Web (Website title override)
 
 # Dark Mode (true/false/never)
@@ -23,15 +23,13 @@ darkmode: true
 # Social links
 github_username: sadegh-majidi
 linkedin_username: mohammad-sadegh-majidi-yazdi-602275191
+googlescholar_username: ZXFOus0AAAAJ
 
 # Additional icon links
-#additional_links:
-#- title: Link name
-#  icon: Font Awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
-#  url: Link url (eg. https://google.com)
-# - title: another link
-#   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&s=brands&m=free)
-#   url: Link url (eg. https://google.com)
+additional_links:
+- title: CV
+  icon: fa-regular fa-file
+  url: assets/CV.pdf
 
 # Google Analytics and Tag Manager
 # Using more than one of these may cause issues with reporting
@@ -43,13 +41,13 @@ linkedin_username: mohammad-sadegh-majidi-yazdi-602275191
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a PhD student in the Department of Computer Science (Lawson) at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer architecture security.  I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a> (March 2024). My research interests are:
-    - Computer Architecture
+  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a first-year PhD student in the Department of Computer Science at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer security, specifically security and privacy of LLMs (Large Language Models). I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">the Sharif University of Technology</a> (March 2024). My research interests are:
     - Computer Security
-    - Operating Systems
+    - Large Language Models
+    - Computer Architecture
     - Distributed Systems
 
-  As a computer scientist, I have always enjoyed studying theoretical computer science and getting my hands dirty with mathematics, but I have a special fondness for the practical aspects of computer science. I love to spend consecutive hours trying to understand a challenge in the system and solve it. My ultimate professional goal is to use my knowledge and skills to create something of value for the betterment of the world.
+  As a computer scientist, I have always enjoyed studying theoretical computer science and getting my hands dirty with mathematics, but I have a special fondness for the practical aspects of computer science. I love to spend consecutive hours trying to understand a challenge in the system security and solve it. My ultimate professional goal is to use my knowledge and skills to create something of value for the betterment of the world.
 
 content:
   - title: Education
@@ -59,7 +57,7 @@ content:
         title: Purdue University
         caption: August 2024 - Present
         sub_title: PhD in Computer Science
-        description: I'm in the middle of a challenging but rewarding academic journey at Purdue University, one of the top universities in the United States (it has the oldest Computer Science department in the country). During my PhD studies, I work there as a full-time research assistant.
+        description: I'm in the middle of a challenging but rewarding academic journey at Purdue University, one of the top universities in the United States (it has the oldest Computer Science department in the country). During my PhD studies, I work there as a full-time research assistant. I am advised by <a href="https://mktrm.github.io/">Prof. Kazem Taram</a>.
       - layout: left
         title: Sharif University of Technology
         caption: September 2019 - March 2024
@@ -78,7 +76,7 @@ content:
         title: Purdue University
         role: Research Assistant
         caption: Aug 2024 - Present
-        description: I am currently working as a research assistant under the supervision of <a href="https://mktrm.github.io/">Prof. Kazem Taram</a> and as a full-time member of the SecArch Lab. Our lab's general focus is on the fields of Computer Architecture and Security, but for now, I am focusing on the security and privacy of LLMs (Large Language Models).
+        description: I am currently working as a research assistant under the supervision of <a href="https://mktrm.github.io/">Prof. Kazem Taram</a> and as a full-time member of the SecArch Lab. Our lab's general focus is on the intersection of Computer Architecture and Security, but for now, I am focusing on the security and privacy of LLMs (Large Language Models), specifically investigating potential vulnerabilities related to inference process of these models. As the demand for inference is growing way faster than the training, we should consider the security risks of improving inference performance (latency & throughput) in our research. Understanding these risks is crucial for designing more secure and efficient AI systems.
       - layout: left
         title: Sharif University of Technology
         link: https://github.com/ARH80/WIDESim
