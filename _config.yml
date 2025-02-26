@@ -29,7 +29,7 @@ googlescholar_username: ZXFOus0AAAAJ
 additional_links:
 - title: CV
   icon: fa fa-file-text
-  url: assets/CV.pdf
+  url: /assets/CV.pdf
 
 # Google Analytics and Tag Manager
 # Using more than one of these may cause issues with reporting
