@@ -7,7 +7,7 @@ version: 2
 
 # Personal info
 name: Mohammad Sadegh Majidi Yazdi
-title: Graduate Student - Computer Science
+title: PhD Student - Computer Science
 email: mmajidiy@purdue.edu
 email_title: Email
 # email: mmajidiy@purdue.edu
@@ -41,7 +41,7 @@ additional_links:
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a first-year PhD student in the Department of Computer Science at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer security, specifically security and privacy of LLMs (Large Language Models). I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">Sharif University of Technology</a> (March 2024). My research interests are:
+  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a second-year PhD student in the Department of Computer Science at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer security, specifically security and privacy of LLMs (Large Language Models). I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">Sharif University of Technology</a> (March 2024). My research interests are:
     - Computer Security
     - Large Language Models
     - Computer Architecture
@@ -76,7 +76,7 @@ content:
         title: Purdue University
         role: Research Assistant
         caption: Aug 2024 - Present
-        description: I am currently working as a research assistant under the supervision of <a href="https://mktrm.github.io/">Prof. Kazem Taram</a> and as a full-time member of the SecArch Lab. Our lab's general focus is on the intersection of Computer Architecture and Security, but for now, I am focusing on the security and privacy of LLMs (Large Language Models), specifically investigating potential vulnerabilities related to inference process of these models. As the demand for inference is growing way faster than the training, we should consider the security risks of improving inference performance (latency & throughput) in our research. Understanding these risks is crucial for designing more secure and efficient AI systems.
+        description: I am currently working as a research assistant under the supervision of <a href="https://mktrm.github.io/">Prof. Kazem Taram</a> and as a full-time member of the SecArch Lab. Our lab's general focus is on the intersection of Computer Architecture and Security, but for now, I am focusing on the security and privacy of LLMs (Large Language Models), specifically investigating potential vulnerabilities related to existing side channels in inference process of these models. As the demand for inference is growing way faster than the training, we should consider the security risks of improving inference performance (latency & throughput) in our research. Understanding these risks is crucial for designing more secure and efficient AI systems.
       - layout: left
         title: Sharif University of Technology
         link: https://github.com/ARH80/WIDESim
@@ -181,6 +181,7 @@ content:
     layout: text
     content: |
       Alongside my interests in Computer Security, Computer Architecture, and Distributed Systems, some of my other interests and hobbies are:
+      - Participating in CTF (Capture The Flag) competitions
       - Gaming, with a particular fondness for Role-Playing Games
       - Swimming, my favorite sport
       - Listening to music, especially in the Rock and Metal genre
