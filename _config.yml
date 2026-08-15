@@ -93,6 +93,16 @@ content:
     layout: list
     content:
       - layout: top-middle
+        title: "Leaky Language Models: Stealing Architecture and Inference Optimizations via Per-Token Timing"
+        link: https://sadegh-majidi.github.io/leakylms/
+        link_text: project page
+        additional_links:
+          - title: arXiv
+            icon: fa fa-file-text
+            url: https://arxiv.org/abs/2607.20723
+        caption: Preprint, July 2026
+        description: Sadegh Majidi, Niloofar Mireshghallah, Kazem Taram
+      - layout: top-middle
         title: "WIDESim: A Toolkit for Simulating Resource Management Techniques Of Scientific Workflows in Distributed Environments with Graph Topology"
         link: https://doi.org/10.1007/s10723-024-09778-y
         link_text: publication link
