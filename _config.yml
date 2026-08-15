@@ -41,7 +41,7 @@ additional_links:
 # about_title: About Me (Use this to override about section title)
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a second-year PhD student in the Department of Computer Science at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer security, specifically security and privacy of LLMs (Large Language Models). I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">Sharif University of Technology</a> (March 2024). My research interests are:
+  My name is Mohammad Sadegh Majidi Yazdi, but I prefer to be called Sadegh. I am currently a third-year PhD student in the Department of Computer Science at <a href="https://www.purdue.edu/">Purdue University</a>. My current research focus is on the field of computer security, specifically security and privacy of LLMs (Large Language Models). I've got my B.Sc. degree in Computer Engineering at <a href="https://en.sharif.edu/">Sharif University of Technology</a> (March 2024). My research interests are:
     - Computer Security
     - Large Language Models
     - Computer Architecture
@@ -102,6 +102,14 @@ content:
             url: https://arxiv.org/abs/2607.20723
         caption: Preprint, July 2026
         description: Sadegh Majidi, Niloofar Mireshghallah, Kazem Taram
+      - layout: top-middle
+        title: "From Building Blocks to Planning: Multi-Step Spatial Reasoning in LLMs with Reinforcement Learning"
+        additional_links:
+          - title: arXiv
+            icon: fa fa-file-text
+            url: https://arxiv.org/abs/2512.24532
+        caption: Preprint, December 2025
+        description: Amir Tahmasbi, Sadegh Majidi, Kazem Taram, Aniket Bera
       - layout: top-middle
         title: "WIDESim: A Toolkit for Simulating Resource Management Techniques Of Scientific Workflows in Distributed Environments with Graph Topology"
         link: https://doi.org/10.1007/s10723-024-09778-y
