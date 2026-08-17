@@ -13,13 +13,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>LeakyLMs — Stealing Architecture and Inference Optimizations via Per-Token Timing</title>
-<meta name="description" content="Per-token generation timing over an ordinary streaming API leaks a hosted model's architecture and its inference stack. We recovered the 128K draft-model context window behind Gemini Flash 2.5 with nothing but a clock.">
+<meta name="description" content="Per-token generation timing over an ordinary streaming API leaks a hosted model's architecture and its inference stack. We recovered the 128K draft-model context window behind Gemini Flash 2.5 with nothing but a timer.">
 
 <!-- DEPLOY-URL (1/4) -->
 <link rel="canonical" href="https://sadegh-majidi.github.io/leakylms/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeakyLMs — Stealing Architecture and Inference Optimizations via Per-Token Timing">
-<meta property="og:description" content="Per-token timing over an ordinary streaming API leaks a hosted model's architecture and inference stack. We recovered the 128K draft context window behind Gemini Flash 2.5 with nothing but a clock.">
+<meta property="og:description" content="Per-token timing over an ordinary streaming API leaks a hosted model's architecture and inference stack. We recovered the 128K draft context window behind Gemini Flash 2.5 with nothing but a timer.">
 <!-- DEPLOY-URL (2/4) -->
 <meta property="og:url" content="https://sadegh-majidi.github.io/leakylms/">
 <!-- DEPLOY-URL (3/4) -->
@@ -143,11 +143,7 @@ a:hover{ text-decoration-color:var(--break); }
   background:var(--void); color:#E7EBE9;
   padding:clamp(2.5rem,6vw,4.5rem) 1.5rem clamp(2rem,5vw,3rem);
 }
-.hero-inner{
-  max-width:var(--shell); margin:0 auto;
-  display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
-  gap:clamp(2rem,5vw,3.5rem); align-items:center;
-}
+.hero-inner{ max-width:var(--shell); margin:0 auto; }
 .hero .eyebrow{ color:#7C878D; }
 .hero h1{
   font-family:"Space Grotesk",system-ui,sans-serif;
@@ -164,15 +160,7 @@ a:hover{ text-decoration-color:var(--break); }
 }
 
 /* Signature element: the paper's own cliff, in a readout plate on the dark hero. */
-.readout{
-  background:var(--plate); border-radius:3px; padding:.9rem .9rem .5rem;
-  box-shadow:0 1px 0 rgba(255,255,255,.06), 0 18px 46px rgba(0,0,0,.45);
-}
-.readout img{ display:block; width:100%; height:auto; }
-.readout .rlabel{
-  font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.05em;
-  color:#5A646A; padding:.45rem .15rem .2rem; line-height:1.45;
-}
+
 
 /* Evidence strip — the numbers, immediately under the claim */
 .evidence{
@@ -182,14 +170,14 @@ a:hover{ text-decoration-color:var(--break); }
 .evidence-inner{
   max-width:var(--shell); margin:0 auto;
   border-top:1px solid #222A2F; padding-top:1.6rem;
-  display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(1.2rem,3vw,2.5rem);
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:clamp(1.1rem,3vw,2.5rem);
 }
 .ev .n{
   font-family:"Space Grotesk",system-ui,sans-serif; font-weight:600;
-  font-size:clamp(1.9rem,4vw,2.7rem); line-height:1; letter-spacing:-.02em;
+  font-size:clamp(1.02rem,1.7vw,1.24rem); line-height:1.25; letter-spacing:-.012em;
   color:#fff; display:block;
 }
-.ev .n em{ font-style:normal; color:var(--break); }
+
 .ev p{ margin:.55rem 0 0; font-size:.88rem; line-height:1.45; color:#98A3A8; max-width:30ch; }
 
 /* ---------- Byline ---------- */
@@ -377,29 +365,7 @@ details.deep .body p{ max-width:none; }
 .cliff-views button:hover{ color:var(--ink); }
 .cliff-views button[aria-pressed="true"]{ color:var(--break); border-color:var(--break); }
 .cliff-plot{ padding:.9rem 1.1rem .2rem; }
-.cliff-plot svg{ display:block; width:100%; height:auto; overflow:visible; }
-.cliff-plot .ax{ stroke:currentColor; stroke-opacity:.45; stroke-width:1; fill:none; }
-.cliff-plot .grid{ stroke:currentColor; stroke-opacity:.12; stroke-width:1; fill:none; }
-.cliff-plot .lbl{
-  font-family:"IBM Plex Mono",monospace; font-size:11.5px; fill:currentColor;
-  fill-opacity:.62; letter-spacing:.02em;
-}
-.cliff-plot .axname{ font-family:"IBM Plex Mono",monospace; font-size:12px; fill:currentColor; fill-opacity:.72; }
-/* Annotation, not data — kept neutral so it can't be mistaken for the
-   Token 90 series, which is red in the paper's own palette. */
-.cliff-plot .brk{ stroke:currentColor; stroke-opacity:.55; stroke-width:1.2; stroke-dasharray:4 3; }
-.cliff-plot .brklbl{
-  font-family:"IBM Plex Mono",monospace; font-size:12px;
-  fill:currentColor; fill-opacity:.8;
-}
-.cliff-plot .cur{ stroke:currentColor; stroke-opacity:.5; stroke-width:1; }
-.cliff-plot .s1{ stroke:var(--s1); } .cliff-plot .s2{ stroke:var(--s2); }
-.cliff-plot .s3{ stroke:var(--s3); } .cliff-plot .s4{ stroke:var(--s4); }
-.cliff-plot .ln{ fill:none; stroke-width:1.6; stroke-linejoin:round; stroke-linecap:round; }
-.cliff-plot .dot{ stroke-width:0; }
-.cliff-plot .d1{ fill:var(--s1); } .cliff-plot .d2{ fill:var(--s2); }
-.cliff-plot .d3{ fill:var(--s3); } .cliff-plot .d4{ fill:var(--s4); }
-.cliff-plot .hit{ stroke:currentColor; stroke-width:1.6; fill:none; }
+.cliff-plot .chart svg{ display:block; width:100%; height:auto; }
 
 .cliff-ctl{ padding:.2rem 1.1rem 1rem; }
 .cliff-ctl input[type=range]{ width:100%; accent-color:var(--break); cursor:pointer; margin:.3rem 0 0; }
@@ -431,12 +397,53 @@ details.deep .body p{ max-width:none; }
 @media (max-width:640px){
   .cliff-read{ grid-template-columns:1fr; gap:.25rem; }
   .cliff-views{ margin-left:0; width:100%; }
-  /* Below ~640px the plot would scale its 9.5px labels down to ~4px. Scroll the
-     plot inside its own container instead, exactly as the wide tables do. */
-  .cliff-plot{ overflow-x:auto; }
-  .cliff-plot svg{ min-width:600px; }
-  .cliff-ctl .hint::after{ content:" · plot scrolls sideways"; opacity:.75; }
+  /* The interactive plot is drawn natively now, so it adapts on its own and no
+     longer needs to scroll sideways at narrow widths. */
 }
+
+/* ---------- Native charts ----------
+   Drawn by assets/charts.js at the container's real pixel width, so label type
+   stays a fixed size at every viewport and only the geometry adapts. These are
+   theme-aware, so unlike the paper's exported figures they need no light plate. */
+.figbox{
+  background:var(--card); border:1px solid var(--rule); border-radius:3px;
+  padding:1rem 1.1rem .7rem; max-width:var(--figure); color:var(--ink);
+}
+.figbox.pair{ display:grid; grid-template-columns:1fr 1fr; gap:1.1rem 1.4rem; max-width:100%; }
+.chart{ width:100%; min-width:0; }
+.chart svg{ display:block; width:100%; height:auto; }
+.ch-grid{ stroke:currentColor; stroke-opacity:.13; }
+.ch-ax{ stroke:currentColor; stroke-opacity:.45; }
+.ch-lbl{ fill:currentColor; fill-opacity:.6; }
+.ch-name{ fill:currentColor; fill-opacity:.78; }
+.ch-mark{ stroke:currentColor; stroke-opacity:.5; stroke-width:1.2; stroke-dasharray:4 3; }
+.ch-marklbl{ fill:currentColor; fill-opacity:.82; }
+.ch-cur{ stroke:currentColor; stroke-opacity:.55; }
+.ch-hit{ stroke:currentColor; stroke-width:1.6; }
+.ch-leg{
+  display:flex; flex-wrap:wrap; gap:.15rem .85rem;
+  font-family:"IBM Plex Mono",monospace; font-size:.68rem;
+  color:var(--steel); margin:.55rem 0 .1rem; line-height:1.8;
+}
+.ch-leg span{ display:inline-flex; align-items:center; gap:.35rem; white-space:nowrap; }
+.ch-sw{ width:15px; height:0; border-top:2.5px solid var(--c); display:inline-block; }
+.ch-sw.dash{ border-top-style:dashed; }
+.ch-note{ font-style:italic; opacity:.85; }
+@media (max-width:640px){
+  .figbox.pair{ grid-template-columns:1fr; }
+  .figbox{ padding:.8rem .85rem .6rem; }
+}
+
+/* Citation markers and reference list */
+sup.cite{ font-size:.6em; line-height:0; vertical-align:super; }
+sup.cite a{
+  font-family:"IBM Plex Mono",monospace; text-decoration:none;
+  color:var(--fast); padding:0 .08em;
+}
+sup.cite a:hover{ text-decoration:underline; }
+.refs{ max-width:var(--measure); padding-left:1.5em; font-size:.93rem; }
+.refs li{ margin-bottom:.65em; padding-left:.2em; }
+.refs li:target{ background:var(--card); outline:3px solid var(--card); border-radius:2px; }
 
 /* Disclosure timeline */
 .timeline{ list-style:none; padding:0; max-width:var(--measure); }
@@ -471,7 +478,6 @@ footer a{ text-decoration-color:var(--rule); }
 @media (max-width:900px){
   body{ font-size:17px; }
   .hero-inner{ grid-template-columns:1fr; gap:2rem; }
-  .evidence-inner{ grid-template-columns:1fr; gap:1.4rem; }
   .shell{ grid-template-columns:1fr; padding-top:2rem; }
   nav.toc{ position:static; border-bottom:1px solid var(--rule); padding-bottom:1.2rem; }
   nav.toc ol{ display:flex; flex-wrap:wrap; gap:.4rem; }
@@ -481,6 +487,8 @@ footer a{ text-decoration-color:var(--rule); }
   .timeline li{ grid-template-columns:1fr; gap:.15rem; }
 }
 </style>
+<script src="assets/charts-data.js" defer></script>
+<script src="assets/charts.js" defer></script>
 </head>
 
 <body>
@@ -492,31 +500,28 @@ footer a{ text-decoration-color:var(--rule); }
       <h1>LeakyLMs</h1>
       <p class="claim">Timing an LLM's streamed tokens tells you more about it than you might think.</p>
       <p class="dek">Its depth, its width, and the optimizations running underneath,
-        read off an LLM API with nothing but a clock.</p>
+        read off an LLM API with nothing but a timer.</p>
     </div>
 
-    <div class="readout">
-      <img src="assets/figures/gemini-flash-2.5_context_plot_nth_breakpoint.svg"
-           alt="Per-token generation time for Gemini Flash 2.5 plotted against prompt length from zero to one million tokens. Four traces for the 20th, 40th, 65th and 90th output tokens all sit near 0.002–0.0035 seconds, then jump vertically at a prompt length marked T_break = 131059 and stay near 0.009 seconds for the rest of the range.">
-      <p class="rlabel">GEMINI FLASH 2.5 &middot; PER-TOKEN LATENCY vs PROMPT LENGTH.<br>
-        THE STEP AT T<sub>break</sub>=131,059 IS A DRAFT MODEL RUNNING OUT OF CONTEXT.</p>
-    </div>
   </div>
 </header>
 
 <div class="evidence">
   <div class="evidence-inner">
     <div class="ev">
-      <span class="n">128<em>K</em></span>
-      <p>Undocumented draft-model context window, recovered from Gemini Flash&nbsp;2.5 by timing alone.</p>
+      <span class="n">A timer is enough</span>
+      <p>No logits, no server logs, no privileged position on the network. Only the arrival
+        times of tokens on an ordinary streaming API.</p>
     </div>
     <div class="ev">
-      <span class="n">3.2<em>&times;</em></span>
-      <p>Jump in per-token latency the moment a prompt outgrows the hidden draft model in Gemini Flash 2.5 API.</p>
+      <span class="n">Architecture and deployment leak</span>
+      <p>Layer count, hidden dimension, and which inference optimizations a provider runs
+        can all be inferred from outside the API.</p>
     </div>
     <div class="ev">
-      <span class="n"><em>#</em>1</span>
-      <p>Rank of the correct hidden dimension retrieved for a gray-box model on a live inference API.</p>
+      <span class="n">No free defense</span>
+      <p>Closing the channel means giving back the latency the optimizations were deployed
+        to buy in the first place.</p>
     </div>
   </div>
 </div>
@@ -550,6 +555,7 @@ footer a{ text-decoration-color:var(--rule); }
       <li><a href="#attack2">2 &middot; Architecture</a></li>
       <li><a href="#mitigations">Mitigations</a></li>
       <li><a href="#disclosure">Disclosure</a></li>
+      <li><a href="#references">References</a></li>
       <li><a href="#citation">Cite</a></li>
     </ol>
   </nav>
@@ -592,8 +598,7 @@ footer a{ text-decoration-color:var(--rule); }
 
       <p>A hosted model does not hand you a finished answer. It hands you one or a few tokens, then
         more, and the gap between them is roughly how long the GPU took to produce
-        them. Providers work to keep those gaps short, because people will
-        not wait. A pipeline tuned that carefully ends up publishing a high-resolution trace
+        them. Providers work to keep those gaps short, because users will not wait. A pipeline tuned that carefully ends up publishing a high-resolution trace
         of its own behavior to anyone willing to timestamp the arrivals.</p>
 
       <p>What sets the size of a gap? Some of it is the network. The rest is the model and
@@ -613,8 +618,8 @@ footer a{ text-decoration-color:var(--rule); }
       </ul>
 
       <p>The first four are the architecture, and providers treat them as confidential. The
-        fifth is the prompt, and it belongs to the attacker. That asymmetry is the whole
-        opening: sweep <strong>T</strong> across a wide range, watch how per-token latency
+        fifth is the prompt, and it belongs to the attacker. That asymmetry is what the attack
+        exploits: sweep <strong>T</strong> across a wide range, watch how per-token latency
         responds, and work backwards to the four numbers you cannot see.</p>
 
       <figure>
@@ -622,7 +627,7 @@ footer a{ text-decoration-color:var(--rule); }
           <img src="assets/figures/transformer_arch.svg"
                alt="Diagram of a decoder-only transformer: an embedding block, a stack of L repeated decoder blocks each containing attention, MLP and normalization subcomponents, and an output projection block. Matrix dimensions on each component are annotated with the parameters H, L, A, I and T.">
         </div>
-        <figcaption><b>The five numbers that set the bill.</b> A decoder-only transformer,
+        <figcaption><b>The five parameters that determine per-token cost.</b> A decoder-only transformer,
           with the parameters that determine per-token cost marked on the components they
           control. <b>H</b> sets the width of every projection. <b>L</b> sets how many times
           the block repeats. <b>A</b> splits attention into heads. <b>I</b> sets how far the
@@ -636,7 +641,7 @@ footer a{ text-decoration-color:var(--rule); }
         Over the endpoints we measured it is small: mean RTT of 26.65&nbsp;ms to Gemini with
         a standard deviation of 0.07&nbsp;ms, and 5.75&nbsp;ms to Cohere with 0.08&nbsp;ms.
         Both standard deviations sit under 5% of the fastest per-token generation time we
-        recorded. The signal survives the internet.</p>
+        recorded. The signal survives the network.</p>
     </section>
 
     <section id="threat">
@@ -691,15 +696,15 @@ footer a{ text-decoration-color:var(--rule); }
       <p class="eyebrow">&sect; Attack 1</p>
       <h2>Speculative decoding, and the cliff</h2>
 
-      <p>The optimization is simple and it works. Run a small draft model ahead of the large
+      <p>The optimization is simple and it works.<sup class="cite"><a href="#ref1">1</a></sup> Run a small draft model ahead of the large
         one. The draft proposes several tokens. The large model verifies them all in a single
         forward pass. If the draft guessed right, several tokens are accepted at once and the
         expensive model ran once instead of four times. If it guessed wrong, the speculated
         tokens are discarded and the pipeline falls back to producing a single token the slow way, plus the wasted draft work.</p>
 
       <p>Processor designers have been here before. This is speculative execution, and part
-        of why Spectre worked is that speculation which gets rolled back still leaves a
-        trace. Speculative decoding does not make every token faster. It makes the common
+        of why Spectre<sup class="cite"><a href="#ref2">2</a></sup> worked is that speculation
+        which gets rolled back still leaves a trace. Speculative decoding does not make every token faster. It makes the common
         case faster and the uncommon case slower. That difference is visible from outside
         the API.</p>
 
@@ -746,9 +751,9 @@ The value of number NUM at the start was equal to
         off removes the jump entirely, which rules out the obvious alternative explanation.</p>
 
       <figure>
-        <div class="plate">
-          <img src="assets/figures/llama13b_1.1b_plot_nth_scaled_break.svg"
-               alt="Per-token generation time against prompt length for a local Guanaco 13B main model with a TinyLlama 1.1B draft model. Three traces for the 15th, 35th and 55th output tokens sit near 0.025 seconds up to about 2,000 tokens, then rise steeply to about 0.21 seconds and flatten. A dashed red line marks T_break = 2030.">
+        <div class="figbox">
+          <div class="chart" data-chart="llama13b"
+               data-alt="Per-token latency against prompt length for a local Guanaco 13B main model with a TinyLlama 1.1B draft. Three traces for the 15th, 35th and 55th output tokens sit near 23 to 30 milliseconds up to about 2,000 tokens, then rise steeply to about 210 milliseconds and flatten.">\n            <noscript><img src="assets/figures/llama13b_1.1b_plot_nth_scaled_break.svg" alt="Per-token generation time against prompt length for a local Guanaco 13B main model with a TinyLlama 1.1B draft, stepping up at about 2,030 tokens." style="width:100%;height:auto;background:#fff;border-radius:2px"></noscript>\n          </div>
         </div>
         <figcaption><b>Ground truth.</b> Local speculative decoding, Guanaco&nbsp;13B main +
           TinyLlama&nbsp;1.1B draft. Per-token latency is flat until the prompt outgrows the
@@ -772,11 +777,11 @@ The value of number NUM at the start was equal to
         is 32K. Google documents none of this.</p>
 
       <figure>
-        <div class="plate pair">
-          <img src="assets/figures/gemini-flash-2.5_context_plot_nth_breakpoint.svg"
-               alt="Per-token generation time versus prompt length for Gemini Flash 2.5 across zero to one million tokens, with a vertical jump at 131,059 tokens marked by a dashed red line.">
-          <img src="assets/figures/gemini-flash-1.5_context_plot_nth_breakpoint.svg"
-               alt="Per-token generation time versus prompt length for Gemini Flash 1.5, with a vertical jump at approximately 32,700 tokens marked by a dashed red line.">
+        <div class="figbox pair">
+          <div class="chart" data-chart="flash25"
+               data-alt="Per-token latency versus prompt length for Gemini Flash 2.5 across zero to one million tokens, with an abrupt step at 131,059 tokens.">\n            <noscript><img src="assets/figures/gemini-flash-2.5_context_plot_nth_breakpoint.svg" alt="Per-token generation time versus prompt length for Gemini Flash 2.5, with an abrupt step at 131,059 tokens." style="width:100%;height:auto;background:#fff;border-radius:2px"></noscript>\n          </div>
+          <div class="chart" data-chart="flash15"
+               data-alt="Per-token latency versus prompt length for Gemini Flash 1.5, with an abrupt step at approximately 32,760 tokens.">\n            <noscript><img src="assets/figures/gemini-flash-1.5_context_plot_nth_breakpoint.svg" alt="Per-token generation time versus prompt length for Gemini Flash 1.5, with an abrupt step near 32,760 tokens." style="width:100%;height:auto;background:#fff;border-radius:2px"></noscript>\n          </div>
         </div>
         <figcaption><b>Two models, two draft windows.</b> Gemini Flash&nbsp;2.5 (left) and
           Flash&nbsp;1.5 (right). Each trace is one output token position. The step is the
@@ -803,7 +808,7 @@ The value of number NUM at the start was equal to
 
       <div class="cliff" id="cliff">
         <div class="cliff-head">
-          <span class="t">Find the cliff yourself</span>
+          <span class="t">Explore the measurements</span>
           <div class="cliff-views" role="group" aria-label="Plot range">
             <button type="button" data-view="full" aria-pressed="true">FULL SWEEP</button>
             <button type="button" data-view="zoom" aria-pressed="false">ZOOM TO BREAK</button>
@@ -811,13 +816,14 @@ The value of number NUM at the start was equal to
         </div>
 
         <div class="cliff-plot">
-          <svg id="cliff-svg" viewBox="0 0 720 330" role="img"
-               aria-label="Interactive plot of Gemini Flash 2.5 per-token latency against prompt length, from the paper's 34 measured points. Latency sits near 2 to 3 milliseconds until a prompt length of 131,059 tokens, then jumps to around 9 milliseconds."></svg>
-          <noscript>
-            <img src="assets/figures/gemini-flash-2.5_context_plot_nth_breakpoint.svg"
-                 alt="Per-token generation time for Gemini Flash 2.5 against prompt length, with a vertical jump at 131,059 tokens."
-                 style="width:100%;height:auto;background:#fff;border-radius:2px">
-          </noscript>
+          <div class="chart" id="cliff-plot"
+               data-alt="Interactive plot of Gemini Flash 2.5 per-token latency against prompt length, from 34 measured points. Latency sits near 2 to 3 milliseconds until a prompt length of 131,059 tokens, then steps up to around 9 milliseconds.">
+            <noscript>
+              <img src="assets/figures/gemini-flash-2.5_context_plot_nth_breakpoint.svg"
+                   alt="Per-token generation time for Gemini Flash 2.5 against prompt length, with an abrupt step at 131,059 tokens."
+                   style="width:100%;height:auto;background:#fff;border-radius:2px">
+            </noscript>
+          </div>
         </div>
 
         <div class="cliff-ctl">
@@ -851,13 +857,13 @@ The value of number NUM at the start was equal to
         Flash&nbsp;2.0 Lite is close to constant across the whole range.</p>
 
       <figure>
-        <div class="plate pair">
-          <img src="assets/figures/gemini-flash-2.0-lite_context_plot_nth.svg"
-               alt="Per-token generation time versus prompt length for Gemini Flash 2.0 Lite, showing a nearly constant flat line with no step.">
-          <img src="assets/figures/cohere-rplus_context_plot_nth.svg"
-               alt="Per-token generation time versus prompt length for Cohere Command R+, showing a smooth gradual rise with no abrupt step.">
+        <div class="figbox pair">
+          <div class="chart" data-chart="flash20lite"
+               data-alt="Per-token latency versus prompt length for Gemini Flash 2.0 Lite, close to constant across the full range with no step.">\n            <noscript><img src="assets/figures/gemini-flash-2.0-lite_context_plot_nth.svg" alt="Per-token generation time versus prompt length for Gemini Flash 2.0 Lite, near constant with no step." style="width:100%;height:auto;background:#fff;border-radius:2px"></noscript>\n          </div>
+          <div class="chart" data-chart="cohere"
+               data-alt="Per-token latency versus prompt length for Cohere Command R+, rising smoothly across the range with no abrupt step.">\n            <noscript><img src="assets/figures/cohere-rplus_context_plot_nth.svg" alt="Per-token generation time versus prompt length for Cohere Command R+, rising smoothly with no abrupt step." style="width:100%;height:auto;background:#fff;border-radius:2px"></noscript>\n          </div>
         </div>
-        <figcaption><b>What a negative looks like.</b> Gemini Flash&nbsp;2.0 Lite (left) is
+        <figcaption><b>What a non-detection looks like.</b> Gemini Flash&nbsp;2.0 Lite (left) is
           near-constant. Cohere Command&nbsp;R+ (right) rises smoothly, consistent
           with a growing KV cache rather than speculation. Neither has the discontinuity the
           attack looks for, which is the point: the test keys on an abrupt step, so a smooth
@@ -886,11 +892,12 @@ The value of number NUM at the start was equal to
         differently-shaped latency curves, and the shape is a fingerprint.</p>
 
       <figure>
-        <div class="plate">
-          <img src="assets/figures/attack2_t_T_configs.svg"
-               alt="Predicted versus measured per-token generation time against token sequence length for eight architecture configurations combining L of 1, 16 and 28 with H of 1152, 2048 and 3072. Solid predicted curves track dashed measured curves closely across all eight; curves for different configurations separate and in one case cross.">
+        <div class="figbox">
+          <div class="chart" data-chart="attack2cfg"
+               data-note="solid = predicted, dashed = measured"
+               data-alt="Predicted against measured per-token latency versus token sequence length for eight architecture configurations combining L of 1, 16 and 28 with H of 1152, 2048 and 3072. Predicted curves track measured curves closely across all eight, and curves for different configurations separate and in one case cross.">\n            <noscript><img src="assets/figures/attack2_t_T_configs.svg" alt="Predicted against measured per-token generation time for eight architecture configurations." style="width:100%;height:auto;background:#fff;border-radius:2px"></noscript>\n          </div>
         </div>
-        <figcaption><b>Architectures have shapes.</b> Predicted (solid) against measured
+        <figcaption><b>Different architectures produce different curves.</b> Predicted (solid) against measured
           (dashed) per-token time for eight (L,&nbsp;H) configurations under eager attention.
           Notice L=28,&nbsp;H=1152 and L=16,&nbsp;H=2048: the deeper, narrower model starts
           cheaper and grows faster, and the two curves cross. That crossing is what makes the
@@ -920,8 +927,8 @@ The value of number NUM at the start was equal to
 
       <p>Why linear regression, when a neural network would fit the data better? Because the
         terms correspond to real cost components, so a bad fit is diagnosable. Because linear
-        models do not chase residual noise, which a more flexible model absorbs happily and
-        then fails to extrapolate from. And because individual terms can be swapped when the implementation changes, which is exactly what happens next.</p>
+        models do not chase residual noise, which a more flexible model would absorb and
+        then fail to extrapolate from. And because individual terms can be swapped when the implementation changes, which is exactly what happens next.</p>
 
       <h3>Four predictors</h3>
 
@@ -930,7 +937,7 @@ The value of number NUM at the start was equal to
           multiplications, as in a stock HuggingFace <span class="mono">transformers</span> forward pass.</li>
         <li><span class="name">Eager (Corrected)</span>Same, plus the cuBLAS kernel corrector
           below. This is the variant that survives contact with architectures it has not seen.</li>
-        <li><span class="name">Flash2</span>Attention terms replaced with FlashAttention2's
+        <li><span class="name">Flash2</span>Attention terms replaced with FlashAttention2's<sup class="cite"><a href="#ref3">3</a></sup>
           memory-access behavior. Derived from the algorithm, not from one implementation. Every
           other subcomponent is unchanged and simply refit.</li>
         <li><span class="name">KV-Flash2</span>Flash2 split into a prefill formulation and a
@@ -939,11 +946,8 @@ The value of number NUM at the start was equal to
 
       <figure>
         <div class="plate wide">
-          <picture>
-            <source srcset="assets/figures/arch_attack_overall_workflow.webp" type="image/webp">
-            <img src="assets/figures/arch_attack_overall_workflow.png"
-                 alt="Workflow diagram showing the offline phase — instrumenting reference model implementations, collecting per-component timing data, deriving analytical scaling terms, and fitting regression coefficients — feeding into an online phase that searches candidate architecture configurations against an observed timing trace.">
-          </picture>
+          <img src="assets/figures/arch_attack_overall_workflow.svg"
+               alt="Workflow diagram. The offline phase instruments reference model implementations, collects per-component timing data, derives analytical scaling terms and fits regression coefficients. That feeds an online phase which searches candidate architecture configurations against an observed timing trace.">
         </div>
         <figcaption><b>Offline, then online.</b> The offline phase instruments open models,
           collects per-subcomponent timings across many (H,&nbsp;L) variants, and fits
@@ -953,7 +957,7 @@ The value of number NUM at the start was equal to
           the online phase touches the target.</figcaption>
       </figure>
 
-      <h3>The part that nearly broke it</h3>
+      <h3>Modeling the library, not just the model</h3>
 
       <p>cuBLAS does not have one matrix-multiply kernel. It has many, and it chooses between
         them based on operand shapes and internal heuristics. A predictor whose coefficients
@@ -961,7 +965,7 @@ The value of number NUM at the start was equal to
         asymptotics changed but because the library quietly switched to a different kernel
         with different constants.</p>
 
-      <p>So we model the library too. A LightGBM classifier predicts which kernel cuBLAS will
+      <p>So we model the library too. A LightGBM<sup class="cite"><a href="#ref4">4</a></sup> classifier predicts which kernel cuBLAS will
         select for a given pair of operand shapes, and a small random forest per kernel
         predicts that kernel's runtime.</p>
 
@@ -1005,8 +1009,8 @@ The value of number NUM at the start was equal to
       <h3>Results</h3>
 
       <p>Recovering one parameter with the others fixed works well across all three
-        implementations. Recovering both at once is markedly harder, and the reason is in the
-        math: most terms depend on the product H&middot;L, so the classifier has to separate
+        implementations. Recovering both at once is markedly harder, and the reason is visible in
+        the model: most terms depend on the product H&middot;L, so the classifier has to separate
         effects the physics has already mixed.</p>
 
       <div class="tw">
@@ -1060,11 +1064,11 @@ The value of number NUM at the start was equal to
         configuration (H=4096,&nbsp;L=32) ranks 28th.</p>
 
       <figure>
-        <div class="plate">
-          <img src="assets/figures/wandb_prefill_B200.svg"
-               alt="Predicted versus measured prefill-stage per-token generation time against token sequence length up to about 31,000 tokens for the Weights and Biases Llama 3.1 8B Instruct API. The solid predicted curve tracks the dashed measured curve closely, with the measured curve slightly higher through the middle of the range.">
+        <div class="figbox">
+          <div class="chart" data-chart="wandb"
+               data-alt="Predicted against measured prefill-stage per-token latency versus token sequence length up to about 31,000 tokens for the Weights and Biases Llama 3.1 8B Instruct API. The predicted curve tracks the measured curve closely, running slightly low through the middle of the range.">\n            <noscript><img src="assets/figures/wandb_prefill_B200.svg" alt="Predicted against measured prefill time for the Weights and Biases Llama 3.1 8B Instruct API." style="width:100%;height:auto;background:#fff;border-radius:2px"></noscript>\n          </div>
         </div>
-        <figcaption><b>A timing model built on our GPUs, predicting someone else's API.</b>
+        <figcaption><b>A predictor fitted on our hardware, applied to an endpoint we do not control.</b>
           Predicted against measured prefill time for W&amp;B's Llama&nbsp;3.1&nbsp;8B
           Instruct endpoint. The curves track across the full sequence range, with the
           predictor running slightly low through the middle. This is the prefill stage, which
@@ -1072,7 +1076,7 @@ The value of number NUM at the start was equal to
           warm.</figcaption>
       </figure>
 
-      <h3>Where it doesn't work</h3>
+      <h3>Limitations</h3>
 
       <p>The W&amp;B result deserves an honest reading. It is a model from a family the
         predictor was trained on, though at dimensions outside its training range, served in
@@ -1090,7 +1094,7 @@ The value of number NUM at the start was equal to
 
     <section id="mitigations">
       <p class="eyebrow">&sect; Mitigations</p>
-      <h2>Every fix costs the thing the optimization bought</h2>
+      <h2>Every mitigation trades against the latency it was meant to save</h2>
 
       <p><strong>Make per-token time constant.</strong> Pad every token's generation to the
         worst case so latency stops depending on the architecture or on what the pipeline
@@ -1120,6 +1124,28 @@ The value of number NUM at the start was equal to
       </ul>
       <p>This page describes what we found and why it matters. It is not a how-to, and it
         adds no operational detail beyond what the paper reports.</p>
+    </section>
+
+    <section id="references">
+      <p class="eyebrow">&sect; References</p>
+      <h2>References</h2>
+      <p>Works cited above, as they appear in the paper's bibliography. The full reference
+        list is in the <a href="https://arxiv.org/abs/2607.20723">paper</a>.</p>
+      <ol class="refs">
+        <li id="ref1">Y. Leviathan, M. Kalman, and Y. Matias. Fast inference from transformers
+          via speculative decoding. <i>Proceedings of the 40th International Conference on
+          Machine Learning</i> (ICML'23), 2023.</li>
+        <li id="ref2">P. Kocher, J. Horn, A. Fogh, D. Genkin, D. Gruss, W. Haas, M. Hamburg,
+          M. Lipp, S. Mangard, T. Prescher, M. Schwarz, and Y. Yarom. Spectre attacks:
+          exploiting speculative execution. <i>40th IEEE Symposium on Security and Privacy</i>
+          (S&amp;P'19), 2019.</li>
+        <li id="ref3">T. Dao. FlashAttention-2: faster attention with better parallelism and
+          work partitioning. <i>arXiv:2307.08691</i>, 2023.</li>
+        <li id="ref4">G. Ke, Q. Meng, T. Finley, T. Wang, W. Chen, W. Ma, Q. Ye, and T.-Y. Liu.
+          LightGBM: a highly efficient gradient boosting decision tree. <i>Proceedings of the
+          31st International Conference on Neural Information Processing Systems</i>
+          (NIPS'17), pages 3149&ndash;3157, 2017.</li>
+      </ol>
     </section>
 
     <section id="citation">
@@ -1160,177 +1186,113 @@ document.querySelectorAll('.copy-btn').forEach(function(btn){
   });
 });
 
-/* ---- Interactive: find the cliff ----
-   All 34 points are the paper's own Gemini Flash 2.5 measurements, in milliseconds.
-   Source of truth: assets/gemini_flash25_trace.csv. Nothing here is simulated. */
-(function(){
-  var root  = document.getElementById('cliff');
-  var svg   = document.getElementById('cliff-svg');
+/* ---- Interactive figure: the same chart engine, plus a cursor ----
+   Shares CHART_DATA.flash25 with the static figure above, so there is one copy of
+   the measurements and one renderer. The slider steps through measured points only. */
+(function () {
+function initCliff() {
+  var root = document.getElementById('cliff');
+  var plot = document.getElementById('cliff-plot');
   var range = document.getElementById('cliff-range');
-  if(!root || !svg || !range) return;
+  if (!root || !plot || !range || !window.CHART_DATA || !window.LeakyCharts) return;
 
-  var D=[[1939,2.5821,3.1002,3.2113,3.1418],
-  [3939,2.3998,3.3367,3.155,3.0699],
-  [7939,1.734,3.1243,3.0844,3.0965],
-  [15939,1.7378,3.0957,3.0415,3.1777],
-  [31939,1.9686,2.4241,3.1741,3.2018],
-  [35939,1.8124,2.9666,3.1689,3.0629],
-  [39939,2.0472,2.143,3.1432,3.167],
-  [47939,2.2984,2.6106,3.038,3.268],
-  [55939,2.1884,2.3601,2.9579,3.1063],
-  [65939,1.9815,2.8334,3.4134,3.1698],
-  [79939,1.862,2.761,3.2999,3.1433],
-  [95939,1.9884,2.2745,3.3383,3.2874],
-  [127939,2.3295,2.3566,3.182,3.351],
-  [129939,2.0965,2.9631,3.3487,3.5961],
-  [130939,2.2994,2.6626,3.4172,3.2065],
-  [131059,4.1045,3.0088,3.42,3.988],
-  [131189,8.3122,9.0631,9.0631,10.2216],
-  [131439,11.203,9.3566,9.3857,10.3125],
-  [131689,8.8156,10.4926,10.1028,9.5042],
-  [131939,8.3129,9.3944,9.3462,9.105],
-  [132939,8.5206,8.9348,8.9774,9.5179],
-  [133939,8.7037,8.9165,8.9281,9.1351],
-  [138939,9.2192,8.541,8.503,8.6497],
-  [143939,8.9367,8.6932,8.6932,8.6111],
-  [159939,8.4405,9.1348,9.0493,9.2699],
-  [179939,9.9794,8.883,8.8846,9.051],
-  [199939,7.969,8.9257,8.9391,9.2612],
-  [219939,8.1893,9.0236,8.9565,8.911],
-  [239939,9.1567,9.3328,9.5519,9.2103],
-  [255939,8.5378,9.1697,9.1234,9.9146],
-  [259939,8.9615,8.1352,8.1352,8.7949],
-  [511939,8.9412,8.7925,8.7925,8.8812],
-  [799939,8.7311,8.738,8.595,9.0495],
-  [999939,8.4961,9.0618,9.0969,9.2683]];
+  var SPEC = window.CHART_DATA.flash25;
+  var BREAK = 131059;
+  var VIEWS = { full: [null, null], zoom: [127000, 135000] };
+  var view = 'full';
+  var xsAll = SPEC.series[0].pts.map(function (p) { return p[0]; });
+  var sel = xsAll.indexOf(130939);
+  if (sel < 0) sel = Math.max(0, xsAll.length - 1);
 
-  var BREAK=131059, NS='http://www.w3.org/2000/svg';
-  var W=720, H=330, P={l:56,r:16,t:16,b:44}, YMAX=12;
-  var VIEWS={ full:[0,1000000], zoom:[127000,135000] };
-  var view='full', sel=14;               // 14 = 130,939, the last fast measurement
-  var NAMES=['Token 20','Token 40','Token 65','Token 90'];
-
-  function fmt(n){ return n.toLocaleString('en-US'); }
-  function dom(){ return VIEWS[view]; }
-  function visible(){
-    var d=dom(), out=[];
-    for(var i=0;i<D.length;i++){ if(D[i][0]>=d[0] && D[i][0]<=d[1]) out.push(i); }
+  function visibleIdx() {
+    var d = VIEWS[view], out = [];
+    xsAll.forEach(function (x, i) {
+      if (d[0] == null || (x >= d[0] && x <= d[1])) out.push(i);
+    });
     return out;
   }
-  function X(v){ var d=dom(); return P.l + (v-d[0])/(d[1]-d[0])*(W-P.l-P.r); }
-  function Y(ms){ return H-P.b - Math.min(ms,YMAX)/YMAX*(H-P.t-P.b); }
-  function mk(tag,a,txt){
-    var e=document.createElementNS(NS,tag);
-    for(var k in a) e.setAttribute(k,a[k]);
-    if(txt!=null) e.textContent=txt;
-    return e;
-  }
-
-  function render(){
-    while(svg.firstChild) svg.removeChild(svg.firstChild);
-    var d=dom(), i, s;
-
-    for(var ms=0; ms<=YMAX; ms+=2){
-      svg.appendChild(mk('line',{'class':'grid',x1:P.l,x2:W-P.r,y1:Y(ms),y2:Y(ms)}));
-      svg.appendChild(mk('text',{'class':'lbl',x:P.l-8,y:Y(ms)+3.5,'text-anchor':'end'},ms));
-    }
-    var ticks = view==='full' ? [0,200000,400000,600000,800000,1000000]
-                              : [127000,129000,131000,133000,135000];
-    ticks.forEach(function(v){
-      if(v<d[0]||v>d[1]) return;
-      svg.appendChild(mk('line',{'class':'grid',x1:X(v),x2:X(v),y1:P.t,y2:H-P.b}));
-      svg.appendChild(mk('text',{'class':'lbl',x:X(v),y:H-P.b+16,'text-anchor':'middle'},
-                        v===0?'0':(v/1000)+'K'));
-    });
-
-    svg.appendChild(mk('line',{'class':'ax',x1:P.l,x2:W-P.r,y1:H-P.b,y2:H-P.b}));
-    svg.appendChild(mk('line',{'class':'ax',x1:P.l,x2:P.l,y1:P.t,y2:H-P.b}));
-    svg.appendChild(mk('text',{'class':'axname',x:(P.l+W-P.r)/2,y:H-8,'text-anchor':'middle'},
-                      'Prompt length (tokens)'));
-    svg.appendChild(mk('text',{'class':'axname',x:-((P.t+H-P.b)/2),y:13,
-                      transform:'rotate(-90)','text-anchor':'middle'},'Per-token latency (ms)'));
-
-    if(BREAK>=d[0] && BREAK<=d[1]){
-      var bx=X(BREAK), toRight = bx < W-160;
-      svg.appendChild(mk('line',{'class':'brk',x1:bx,x2:bx,y1:P.t,y2:H-P.b}));
-      var lab=mk('text',{'class':'brklbl',x:bx+(toRight?6:-6),y:P.t+11,
-                 'text-anchor':toRight?'start':'end'});
-      lab.appendChild(mk('tspan',{},'T'));
-      lab.appendChild(mk('tspan',{dy:'2.5','font-size':'9'},'break'));
-      lab.appendChild(mk('tspan',{dy:'-2.5'},' = 131,059'));
-      svg.appendChild(lab);
-    }
-
-    var vis=visible();
-    for(s=1;s<=4;s++){
-      var pts=[];
-      for(i=0;i<vis.length;i++) pts.push(X(D[vis[i]][0])+','+Y(D[vis[i]][s]));
-      svg.appendChild(mk('polyline',{'class':'ln s'+s,points:pts.join(' ')}));
-    }
-    for(s=1;s<=4;s++){
-      for(i=0;i<vis.length;i++){
-        svg.appendChild(mk('circle',{'class':'dot d'+s,cx:X(D[vis[i]][0]),cy:Y(D[vis[i]][s]),r:2.4}));
-      }
-    }
-
-    if(vis.indexOf(sel)>=0){
-      svg.appendChild(mk('line',{'class':'cur',x1:X(D[sel][0]),x2:X(D[sel][0]),y1:P.t,y2:H-P.b}));
-      for(s=1;s<=4;s++){
-        svg.appendChild(mk('circle',{'class':'hit',cx:X(D[sel][0]),cy:Y(D[sel][s]),r:5}));
-      }
-    }
+  function redraw() {
+    var d = VIEWS[view];
+    var opts = { cursor: xsAll[sel], maxHeight: 320 };
+    if (d[0] != null) { opts.xMin = d[0]; opts.xMax = d[1]; }
+    var spec = {
+      x: SPEC.x, y: SPEC.y, series: SPEC.series,
+      mark: { x: BREAK, label: 'break at 131,059' },
+      alt: plot.getAttribute('data-alt') || ''
+    };
+    var svg = window.LeakyCharts.render(plot, spec, opts);
+    if (!svg) return;
+    plot.innerHTML = '';
+    plot.appendChild(svg);
+    plot.appendChild(window.LeakyCharts.legend(spec));
     readout();
   }
-
-  function readout(){
-    var p=D[sel], html='';
-    document.getElementById('cliff-len').textContent=fmt(p[0]);
-    for(var s=1;s<=4;s++) html+='<i class="k'+s+'">'+NAMES[s-1]+' '+p[s].toFixed(2)+' ms</i>';
-    document.getElementById('cliff-vals').innerHTML=html;
-    var v=document.getElementById('cliff-verdict');
-    if(p[0]<BREAK){
-      v.className='verdict fast';
-      v.textContent='Draft model can still see NUM. Speculation is accepted, tokens stay cheap.';
-    }else if(p[0]===BREAK){
-      v.className='verdict slow';
-      v.textContent='The break. First prompt length where speculation starts failing.';
-    }else{
-      v.className='verdict slow';
-      v.textContent='Draft model is blind to NUM. Every speculation is rejected — the large model does all the work.';
+  function readout() {
+    var x = xsAll[sel];
+    document.getElementById('cliff-len').textContent = window.LeakyCharts.fmtInt(x);
+    var html = '';
+    SPEC.series.forEach(function (s, i) {
+      var hit = null;
+      s.pts.forEach(function (p) { if (p[0] === x) hit = p; });
+      if (hit) html += '<i class="k' + (i + 1) + '">' + s.name + ' ' + hit[1].toFixed(2) + ' ms</i>';
+    });
+    document.getElementById('cliff-vals').innerHTML = html;
+    var v = document.getElementById('cliff-verdict');
+    if (x < BREAK) {
+      v.className = 'verdict fast';
+      v.textContent = 'The draft model can still see NUM, so its speculation is accepted and tokens stay cheap.';
+    } else if (x === BREAK) {
+      v.className = 'verdict slow';
+      v.textContent = 'The break: the first prompt length at which speculation begins to fail.';
+    } else {
+      v.className = 'verdict slow';
+      v.textContent = 'The draft model cannot see NUM, so every speculation is rejected and the large model does all the work.';
     }
   }
-
-  function syncRange(){
-    var vis=visible(), at=vis.indexOf(sel);
-    if(at<0){
-      var best=0, bd=Infinity;
-      for(var k=0;k<vis.length;k++){
-        var dd=Math.abs(D[vis[k]][0]-D[sel][0]);
-        if(dd<bd){ bd=dd; best=k; }
-      }
-      at=best; sel=vis[at];
-    }
-    range.min=0; range.max=vis.length-1; range.value=at;
-  }
-
-  range.addEventListener('input',function(){
-    var vis=visible(), n=+range.value;
-    sel=vis[Math.max(0,Math.min(vis.length-1,n))];
-    render();
-  });
-
-  Array.prototype.forEach.call(root.querySelectorAll('.cliff-views button'),function(b){
-    b.addEventListener('click',function(){
-      view=b.getAttribute('data-view');
-      Array.prototype.forEach.call(root.querySelectorAll('.cliff-views button'),function(o){
-        o.setAttribute('aria-pressed', o===b ? 'true' : 'false');
+  function syncRange() {
+    var vis = visibleIdx(), at = vis.indexOf(sel);
+    if (at < 0) {
+      var best = 0, bd = Infinity;
+      vis.forEach(function (i, k) {
+        var dd = Math.abs(xsAll[i] - xsAll[sel]);
+        if (dd < bd) { bd = dd; best = k; }
       });
-      syncRange(); render();
+      at = best; sel = vis[at];
+    }
+    range.min = 0; range.max = vis.length - 1; range.value = at;
+  }
+
+  range.addEventListener('input', function () {
+    var vis = visibleIdx();
+    sel = vis[Math.max(0, Math.min(vis.length - 1, +range.value))];
+    redraw();
+  });
+  Array.prototype.forEach.call(root.querySelectorAll('.cliff-views button'), function (b) {
+    b.addEventListener('click', function () {
+      view = b.getAttribute('data-view');
+      Array.prototype.forEach.call(root.querySelectorAll('.cliff-views button'), function (o) {
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      });
+      syncRange(); redraw();
     });
   });
 
-  syncRange(); render();
+  syncRange(); redraw();
+  window.LeakyCharts.onTheme(redraw);
+  if ('ResizeObserver' in window) {
+    var last = plot.clientWidth, t = null;
+    new ResizeObserver(function () {
+      if (Math.abs(plot.clientWidth - last) < 2) return;
+      last = plot.clientWidth; clearTimeout(t); t = setTimeout(redraw, 60);
+    }).observe(plot);
+  }
+}
+/* charts.js is deferred, so it is not available while this inline script parses.
+   DOMContentLoaded fires after deferred scripts have run. */
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCliff);
+else initCliff();
 })();
+
 
 /* Sticky TOC current-section highlight */
 (function(){
